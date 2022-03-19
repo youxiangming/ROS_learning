@@ -883,6 +883,19 @@ tf2_msgs_generate_messages_lisp/fast:
 .PHONY : tf2_msgs_generate_messages_lisp/fast
 
 #=============================================================================
+# Target rules for targets named std_srvs_generate_messages_cpp
+
+# Build rule for target.
+std_srvs_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 std_srvs_generate_messages_cpp
+.PHONY : std_srvs_generate_messages_cpp
+
+# fast build rule for target.
+std_srvs_generate_messages_cpp/fast:
+	$(MAKE) -f learning_topic/CMakeFiles/std_srvs_generate_messages_cpp.dir/build.make learning_topic/CMakeFiles/std_srvs_generate_messages_cpp.dir/build
+.PHONY : std_srvs_generate_messages_cpp/fast
+
+#=============================================================================
 # Target rules for targets named turtlesim_generate_messages_lisp
 
 # Build rule for target.
@@ -974,6 +987,19 @@ std_srvs_generate_messages_nodejs/fast:
 .PHONY : std_srvs_generate_messages_nodejs/fast
 
 #=============================================================================
+# Target rules for targets named pose_subscriber
+
+# Build rule for target.
+pose_subscriber: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 pose_subscriber
+.PHONY : pose_subscriber
+
+# fast build rule for target.
+pose_subscriber/fast:
+	$(MAKE) -f learning_topic/CMakeFiles/pose_subscriber.dir/build.make learning_topic/CMakeFiles/pose_subscriber.dir/build
+.PHONY : pose_subscriber/fast
+
+#=============================================================================
 # Target rules for targets named std_srvs_generate_messages_py
 
 # Build rule for target.
@@ -1011,19 +1037,6 @@ turtlesim_generate_messages_py: cmake_check_build_system
 turtlesim_generate_messages_py/fast:
 	$(MAKE) -f learning_topic/CMakeFiles/turtlesim_generate_messages_py.dir/build.make learning_topic/CMakeFiles/turtlesim_generate_messages_py.dir/build
 .PHONY : turtlesim_generate_messages_py/fast
-
-#=============================================================================
-# Target rules for targets named std_srvs_generate_messages_cpp
-
-# Build rule for target.
-std_srvs_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 std_srvs_generate_messages_cpp
-.PHONY : std_srvs_generate_messages_cpp
-
-# fast build rule for target.
-std_srvs_generate_messages_cpp/fast:
-	$(MAKE) -f learning_topic/CMakeFiles/std_srvs_generate_messages_cpp.dir/build.make learning_topic/CMakeFiles/std_srvs_generate_messages_cpp.dir/build
-.PHONY : std_srvs_generate_messages_cpp/fast
 
 # Help Target
 help:
@@ -1093,6 +1106,7 @@ help:
 	@echo "... tf2_msgs_generate_messages_cpp"
 	@echo "... tf2_msgs_generate_messages_py"
 	@echo "... tf2_msgs_generate_messages_lisp"
+	@echo "... std_srvs_generate_messages_cpp"
 	@echo "... turtlesim_generate_messages_lisp"
 	@echo "... turtlesim_generate_messages_nodejs"
 	@echo "... std_srvs_generate_messages_lisp"
@@ -1100,10 +1114,10 @@ help:
 	@echo "... std_srvs_generate_messages_eus"
 	@echo "... turtlesim_generate_messages_eus"
 	@echo "... std_srvs_generate_messages_nodejs"
+	@echo "... pose_subscriber"
 	@echo "... std_srvs_generate_messages_py"
 	@echo "... velocity_publisher"
 	@echo "... turtlesim_generate_messages_py"
-	@echo "... std_srvs_generate_messages_cpp"
 .PHONY : help
 
 

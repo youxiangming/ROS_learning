@@ -80,6 +80,18 @@ install/local/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
 
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
 # Special rule for the target test
 test:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
@@ -123,18 +135,6 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
-
 # The main all target
 all: cmake_check_build_system
 	cd /home/xiangming/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/xiangming/catkin_ws/build/CMakeFiles /home/xiangming/catkin_ws/build/learning_topic/CMakeFiles/progress.marks
@@ -166,6 +166,21 @@ preinstall/fast:
 depend:
 	cd /home/xiangming/catkin_ws/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
+
+# Convenience name for target.
+learning_topic/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule:
+	cd /home/xiangming/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learning_topic/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule
+.PHONY : learning_topic/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+std_srvs_generate_messages_cpp: learning_topic/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule
+
+.PHONY : std_srvs_generate_messages_cpp
+
+# fast build rule for target.
+std_srvs_generate_messages_cpp/fast:
+	cd /home/xiangming/catkin_ws/build && $(MAKE) -f learning_topic/CMakeFiles/std_srvs_generate_messages_cpp.dir/build.make learning_topic/CMakeFiles/std_srvs_generate_messages_cpp.dir/build
+.PHONY : std_srvs_generate_messages_cpp/fast
 
 # Convenience name for target.
 learning_topic/CMakeFiles/turtlesim_generate_messages_lisp.dir/rule:
@@ -273,6 +288,21 @@ std_srvs_generate_messages_nodejs/fast:
 .PHONY : std_srvs_generate_messages_nodejs/fast
 
 # Convenience name for target.
+learning_topic/CMakeFiles/pose_subscriber.dir/rule:
+	cd /home/xiangming/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learning_topic/CMakeFiles/pose_subscriber.dir/rule
+.PHONY : learning_topic/CMakeFiles/pose_subscriber.dir/rule
+
+# Convenience name for target.
+pose_subscriber: learning_topic/CMakeFiles/pose_subscriber.dir/rule
+
+.PHONY : pose_subscriber
+
+# fast build rule for target.
+pose_subscriber/fast:
+	cd /home/xiangming/catkin_ws/build && $(MAKE) -f learning_topic/CMakeFiles/pose_subscriber.dir/build.make learning_topic/CMakeFiles/pose_subscriber.dir/build
+.PHONY : pose_subscriber/fast
+
+# Convenience name for target.
 learning_topic/CMakeFiles/std_srvs_generate_messages_py.dir/rule:
 	cd /home/xiangming/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learning_topic/CMakeFiles/std_srvs_generate_messages_py.dir/rule
 .PHONY : learning_topic/CMakeFiles/std_srvs_generate_messages_py.dir/rule
@@ -317,20 +347,32 @@ turtlesim_generate_messages_py/fast:
 	cd /home/xiangming/catkin_ws/build && $(MAKE) -f learning_topic/CMakeFiles/turtlesim_generate_messages_py.dir/build.make learning_topic/CMakeFiles/turtlesim_generate_messages_py.dir/build
 .PHONY : turtlesim_generate_messages_py/fast
 
-# Convenience name for target.
-learning_topic/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule:
-	cd /home/xiangming/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learning_topic/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule
-.PHONY : learning_topic/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule
+src/pose_subscriber.o: src/pose_subscriber.cpp.o
 
-# Convenience name for target.
-std_srvs_generate_messages_cpp: learning_topic/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule
+.PHONY : src/pose_subscriber.o
 
-.PHONY : std_srvs_generate_messages_cpp
+# target to build an object file
+src/pose_subscriber.cpp.o:
+	cd /home/xiangming/catkin_ws/build && $(MAKE) -f learning_topic/CMakeFiles/pose_subscriber.dir/build.make learning_topic/CMakeFiles/pose_subscriber.dir/src/pose_subscriber.cpp.o
+.PHONY : src/pose_subscriber.cpp.o
 
-# fast build rule for target.
-std_srvs_generate_messages_cpp/fast:
-	cd /home/xiangming/catkin_ws/build && $(MAKE) -f learning_topic/CMakeFiles/std_srvs_generate_messages_cpp.dir/build.make learning_topic/CMakeFiles/std_srvs_generate_messages_cpp.dir/build
-.PHONY : std_srvs_generate_messages_cpp/fast
+src/pose_subscriber.i: src/pose_subscriber.cpp.i
+
+.PHONY : src/pose_subscriber.i
+
+# target to preprocess a source file
+src/pose_subscriber.cpp.i:
+	cd /home/xiangming/catkin_ws/build && $(MAKE) -f learning_topic/CMakeFiles/pose_subscriber.dir/build.make learning_topic/CMakeFiles/pose_subscriber.dir/src/pose_subscriber.cpp.i
+.PHONY : src/pose_subscriber.cpp.i
+
+src/pose_subscriber.s: src/pose_subscriber.cpp.s
+
+.PHONY : src/pose_subscriber.s
+
+# target to generate assembly for a file
+src/pose_subscriber.cpp.s:
+	cd /home/xiangming/catkin_ws/build && $(MAKE) -f learning_topic/CMakeFiles/pose_subscriber.dir/build.make learning_topic/CMakeFiles/pose_subscriber.dir/src/pose_subscriber.cpp.s
+.PHONY : src/pose_subscriber.cpp.s
 
 src/velocity_publisher.o: src/velocity_publisher.cpp.o
 
@@ -367,6 +409,8 @@ help:
 	@echo "... depend"
 	@echo "... install/strip"
 	@echo "... install/local"
+	@echo "... install"
+	@echo "... std_srvs_generate_messages_cpp"
 	@echo "... turtlesim_generate_messages_lisp"
 	@echo "... turtlesim_generate_messages_nodejs"
 	@echo "... std_srvs_generate_messages_lisp"
@@ -376,13 +420,15 @@ help:
 	@echo "... list_install_components"
 	@echo "... turtlesim_generate_messages_eus"
 	@echo "... std_srvs_generate_messages_nodejs"
+	@echo "... pose_subscriber"
 	@echo "... std_srvs_generate_messages_py"
 	@echo "... edit_cache"
 	@echo "... velocity_publisher"
 	@echo "... turtlesim_generate_messages_py"
 	@echo "... rebuild_cache"
-	@echo "... std_srvs_generate_messages_cpp"
-	@echo "... install"
+	@echo "... src/pose_subscriber.o"
+	@echo "... src/pose_subscriber.i"
+	@echo "... src/pose_subscriber.s"
 	@echo "... src/velocity_publisher.o"
 	@echo "... src/velocity_publisher.i"
 	@echo "... src/velocity_publisher.s"
