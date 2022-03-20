@@ -25,7 +25,7 @@ int main(int argc, char **argv)
 
     // 创建一个Subscriber，订阅名为/person_info的topic，注册回调函数personInfoCallback
     //！！！！！关键！！！！！
-    ros::Subscriber person_info_sub = n.subscribe("/person_info", 10, personInfoCallback);
+    ros::Subscriber person_info_sub = n.subscribe("person_info", 10, personInfoCallback);
 
     // 循环等待回调函数
     ros::spin();

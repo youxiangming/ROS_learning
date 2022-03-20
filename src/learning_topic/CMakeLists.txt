@@ -16,6 +16,8 @@ find_package(catkin REQUIRED COMPONENTS
   turtlesim
   message_generation
 )
+# 需要加入 message_generation,必须有 std_msgs
+
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -76,8 +78,18 @@ find_package(catkin REQUIRED COMPONENTS
 #   DEPENDENCIES
 #   geometry_msgs#   std_msgs
 # )
-add_message_files(FILES Person.msg)
-generate_messages( DEPENDENCIES std_msgs)
+
+# 配置 msg 源文件
+add_message_files(
+  FILES 
+  Person.msg)
+# 生成消息时依赖于 std_msgs
+generate_messages( 
+  DEPENDENCIES 
+  std_msgs)
+#第一句,告诉编译器Person.msg是我们定义的消息接口
+#第二句，告诉编译器在编译Person.msg文件的时候，需要依赖ROS哪些已有的库或者包。
+
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
 ################################################
@@ -106,6 +118,7 @@ generate_messages( DEPENDENCIES std_msgs)
 ## INCLUDE_DIRS: uncomment this if your package contains header files
 ## LIBRARIES: libraries you create in this project that dependent projects also need
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
+
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
@@ -155,6 +168,7 @@ add_dependencies(person_publisher ${PROJECT_NAME}_generate_messages_cpp)
 add_executable(person_subscriber src/person_subscriber.cpp)
 target_link_libraries(person_subscriber ${catkin_LIBRARIES})
 add_dependencies(person_subscriber ${PROJECT_NAME}_generate_messages_cpp)
+
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use

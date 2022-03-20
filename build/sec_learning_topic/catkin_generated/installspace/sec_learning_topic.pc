@@ -1,0 +1,8 @@
+prefix=/home/xiangming/catkin_ws/install
+
+Name: sec_learning_topic
+Description: Description of sec_learning_topic
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

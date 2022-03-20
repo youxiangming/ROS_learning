@@ -23,7 +23,7 @@
 (defconstant learning_topic::Person::*FEMALE* 2)
 (defclass learning_topic::Person
   :super ros::object
-  :slots (_name _sex _age ))
+  :slots (_name _sex _age _age1 _height ))
 
 (defmethod learning_topic::Person
   (:init
@@ -31,11 +31,15 @@
     ((:name __name) "")
     ((:sex __sex) 0)
     ((:age __age) 0)
+    ((:age1 __age1) 0)
+    ((:height __height) 0.0)
     )
    (send-super :init)
    (setq _name (string __name))
    (setq _sex (round __sex))
    (setq _age (round __age))
+   (setq _age1 (round __age1))
+   (setq _height (float __height))
    self)
   (:name
    (&optional __name)
@@ -46,6 +50,12 @@
   (:age
    (&optional __age)
    (if __age (setq _age __age)) _age)
+  (:age1
+   (&optional __age1)
+   (if __age1 (setq _age1 __age1)) _age1)
+  (:height
+   (&optional __height)
+   (if __height (setq _height __height)) _height)
   (:serialization-length
    ()
    (+
@@ -55,6 +65,10 @@
     1
     ;; uint8 _age
     1
+    ;; uint16 _age1
+    2
+    ;; float64 _height
+    8
     ))
   (:serialize
    (&optional strm)
@@ -66,6 +80,10 @@
        (write-byte _sex s)
      ;; uint8 _age
        (write-byte _age s)
+     ;; uint16 _age1
+       (write-word _age1 s)
+     ;; float64 _height
+       (sys::poke _height (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
      ;;
      (if (null strm) (get-output-stream-string s))))
   (:deserialize
@@ -76,11 +94,15 @@
      (setq _sex (sys::peek buf ptr- :char)) (incf ptr- 1)
    ;; uint8 _age
      (setq _age (sys::peek buf ptr- :char)) (incf ptr- 1)
+   ;; uint16 _age1
+     (setq _age1 (sys::peek buf ptr- :short)) (incf ptr- 2)
+   ;; float64 _height
+     (setq _height (sys::peek buf ptr- :double)) (incf ptr- 8)
    ;;
    self)
   )
 
-(setf (get learning_topic::Person :md5sum-) "8361f88618d6779bd872f0ba928ced56")
+(setf (get learning_topic::Person :md5sum-) "8cf74e85a44e7a35ab62353a46e326a3")
 (setf (get learning_topic::Person :datatype-) "learning_topic/Person")
 (setf (get learning_topic::Person :definition-)
       "string name
@@ -90,10 +112,13 @@ uint8 age
 uint8 unknown =0
 uint8 male=1
 uint8 female=2
+
+uint16 age1
+float64 height
 ")
 
 
 
-(provide :learning_topic/Person "8361f88618d6779bd872f0ba928ced56")
+(provide :learning_topic/Person "8cf74e85a44e7a35ab62353a46e326a3")
 
 

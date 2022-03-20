@@ -21,6 +21,8 @@ class Person {
       this.name = null;
       this.sex = null;
       this.age = null;
+      this.age1 = null;
+      this.height = null;
     }
     else {
       if (initObj.hasOwnProperty('name')) {
@@ -41,6 +43,18 @@ class Person {
       else {
         this.age = 0;
       }
+      if (initObj.hasOwnProperty('age1')) {
+        this.age1 = initObj.age1
+      }
+      else {
+        this.age1 = 0;
+      }
+      if (initObj.hasOwnProperty('height')) {
+        this.height = initObj.height
+      }
+      else {
+        this.height = 0.0;
+      }
     }
   }
 
@@ -52,6 +66,10 @@ class Person {
     bufferOffset = _serializer.uint8(obj.sex, buffer, bufferOffset);
     // Serialize message field [age]
     bufferOffset = _serializer.uint8(obj.age, buffer, bufferOffset);
+    // Serialize message field [age1]
+    bufferOffset = _serializer.uint16(obj.age1, buffer, bufferOffset);
+    // Serialize message field [height]
+    bufferOffset = _serializer.float64(obj.height, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -65,13 +83,17 @@ class Person {
     data.sex = _deserializer.uint8(buffer, bufferOffset);
     // Deserialize message field [age]
     data.age = _deserializer.uint8(buffer, bufferOffset);
+    // Deserialize message field [age1]
+    data.age1 = _deserializer.uint16(buffer, bufferOffset);
+    // Deserialize message field [height]
+    data.height = _deserializer.float64(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
     let length = 0;
     length += object.name.length;
-    return length + 6;
+    return length + 16;
   }
 
   static datatype() {
@@ -81,7 +103,7 @@ class Person {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '8361f88618d6779bd872f0ba928ced56';
+    return '8cf74e85a44e7a35ab62353a46e326a3';
   }
 
   static messageDefinition() {
@@ -94,6 +116,9 @@ class Person {
     uint8 unknown =0
     uint8 male=1
     uint8 female=2
+    
+    uint16 age1
+    float64 height
     `;
   }
 
@@ -122,6 +147,20 @@ class Person {
     }
     else {
       resolved.age = 0
+    }
+
+    if (msg.age1 !== undefined) {
+      resolved.age1 = msg.age1;
+    }
+    else {
+      resolved.age1 = 0
+    }
+
+    if (msg.height !== undefined) {
+      resolved.height = msg.height;
+    }
+    else {
+      resolved.height = 0.0
     }
 
     return resolved;

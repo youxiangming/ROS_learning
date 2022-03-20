@@ -5,4 +5,8 @@
           SEX
           AGE-VAL
           AGE
+          AGE1-VAL
+          AGE1
+          HEIGHT-VAL
+          HEIGHT
 ))

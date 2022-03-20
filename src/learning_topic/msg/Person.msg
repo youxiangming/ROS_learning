@@ -5,3 +5,6 @@ uint8 age
 uint8 unknown =0
 uint8 male=1
 uint8 female=2
+
+uint16 age1
+float64 height
