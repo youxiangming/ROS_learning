@@ -1,0 +1,7 @@
+<launch>
+
+  <include file="$(find bingda_tutorials)/launch/gazebo_world.launch"/>
+
+  <node name="spawn_model"  pkg="gazebo_ros"  type="spawn_model" args="-file $(find bingda_tutorials)/urdf/mybot.urdf -urdf -model robot_description" output="screen" />
+
+</launch>

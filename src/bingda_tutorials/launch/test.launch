@@ -1,0 +1,8 @@
+<!-- <launch>
+    <node pkg="bingda_practices" type="talker" name="talker_launch"/>
+    <node pkg="bingda_practices" type="listener.py" name="listener" output="screen"/>
+</launch> -->
+<launch>
+    <include file="$(find bingda_practices)/launch/talker.launch"/>
+    <include file="$(find bingda_practices)/launch/listener.launch"/>
+</launch>

@@ -1,0 +1,5 @@
+<launch>
+    <node pkg="tf" type="static_transform_publisher" name="static_transform"
+        args="0.1 0.0 0.2 0 0.0 0.0 /tf1 /tf2 20">
+    </node>
+</launch>
