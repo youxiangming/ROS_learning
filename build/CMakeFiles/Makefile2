@@ -2423,24 +2423,6 @@ clean: bingda_tutorials/CMakeFiles/actionlib_generate_messages_py.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Directory level rules for directory ros_gazebo_learning
-
-# Convenience name for "all" pass in the directory.
-ros_gazebo_learning/all:
-
-.PHONY : ros_gazebo_learning/all
-
-# Convenience name for "clean" pass in the directory.
-ros_gazebo_learning/clean:
-
-.PHONY : ros_gazebo_learning/clean
-
-# Convenience name for "preinstall" pass in the directory.
-ros_gazebo_learning/preinstall:
-
-.PHONY : ros_gazebo_learning/preinstall
-
-#=============================================================================
 # Directory level rules for directory learning_topic
 
 # Convenience name for "all" pass in the directory.
