@@ -5,6 +5,8 @@
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.
 subdirs("gtest")
+subdirs("robot_navigation")
+subdirs("teleop_twist_keyboard")
 subdirs("bingda_tutorials")
 subdirs("ros_gazebo_learning")
 subdirs("learning_topic")
